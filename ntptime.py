@@ -28,7 +28,7 @@ except:
 NTP_DELTA = 3155673600
 host = "time1.google.com"
 
-def time():
+def epoch():
     NTP_QUERY = bytearray(48)
     NTP_QUERY[0] = 0x1b
     addr = socket.getaddrinfo(host, 123)[0][-1]
@@ -40,12 +40,3 @@ def time():
     #s.close()
     val = struct.unpack("!I", msg[40:44])[0]
     return val - NTP_DELTA
-
-def settime():
-    t = time()
-    import machine
-    import utime
-    tm = utime.localtime(t)
-    tm = tm[0:3] + (0,) + tm[3:6] + (0,)
-    machine.RTC().datetime(tm)
-    print(utime.localtime())
