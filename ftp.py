@@ -1,22 +1,22 @@
-#
-# Small ftp server for ESP8266 and ESP32 Micropython
-#
-# Based on the work of chrisgp - Christopher Popp and pfalcon - Paul Sokolovsky
-#
-# The server accepts passive mode only.
-# It runs in a separated thread
-#
-# Start the server with:
-#   from ftp import ftpserver
-#   u = ftpserver()
-#   u.start_thread()
-#
-# Copyright (c) 2016 Christopher Popp (initial ftp server framework)
-# Copyright (c) 2016 Robert Hammelrath (putting the pieces together and a few extensions)
-# Copyright (c) 2017 Mauro Riva (lemariva.com) (ftp class, dbg option and threading (only ESP32))
-# Copyright (c) 2018 Gautier HUSSON (liberasys.com) (reentrancy)
-# Distributed under MIT License
-#
+"""
+ Small ftp server for ESP8266 and ESP32 Micropython
+
+ Based on the work of chrisgp - Christopher Popp and pfalcon - Paul Sokolovsky
+
+ The server accepts passive mode only.
+ It runs in a separated thread
+
+ Start the server with:
+   from ftp import ftpserver
+   u = ftpserver()
+   u.start_thread()
+
+ Distributed under MIT License
+ Copyright (c) 2016 Christopher Popp (initial ftp server framework)
+ Copyright (c) 2016 Robert Hammelrath (putting the pieces together and a few extensions)
+ Copyright (c) 2017 Mauro Riva (lemariva.com) (ftp class, dbg option and threading (only ESP32))
+ Copyright (c) 2018 Gautier HUSSON (liberasys.com) (reentrancy)
+"""
 
 import socket
 import network
