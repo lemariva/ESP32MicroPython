@@ -1,5 +1,7 @@
 # ESP32-MicroPython
-Basic functions/libraries for ESP32 running MicroPython
+Basic functions/libraries for ESP32/ESP8266 and WiPy2.0/3.0 running MicroPython.
+
+More info: [lemariva.com](https://lemariva.com/micropython)
 
 ftp.py
 ------------
@@ -27,6 +29,16 @@ Get the epoch time from time1.google.com
 timeutils.py
 ------------
 Implements `machine.RTC()` with `ntp_sync()`, `gmtime()` and `formatdate()` -RFC 2822 date format- as functions
+
+
+md5.py
+------------
+Encode a string using an MD5 algorithm.
+```
+>>> import md5
+>>> md5.digest('foo')
+'acbd18db4cc2f85cedef654fccc4a4d8
+```
 
 
 Changelog
