@@ -94,7 +94,7 @@ class RTC():
 
         epoch_tmp = float(epoch)
 
-        seconds = int(epoch%60) 
+        seconds = int(epoch%60)
         epoch = epoch / 60
         minutes = int(epoch%60)
         epoch = epoch / 60
@@ -139,12 +139,18 @@ class RTC():
             print("Timeutils exception: " + str(e))
         return date_str
 
-    def utcnow(self, time_epoch=None, minute=0, seconds=0):
+    def utcnow(self, time_epoch=None, minutes=0, seconds=0):
         if(time_epoch == None):
             self.clock_now()
-            time_epoch = self.ntp_epoch + minute * 60 + seconds
+            time_epoch = self.ntp_epoch + minutes * 60 + seconds
         return time_epoch
 
+    def utc_now(self, minutes=0, seconds=0):
+        self.clock_now()
+        tmp_gmtime = self.gmtime(self.ntp_epoch + minutes * 60 + seconds)
+        return '%04d-%02d-%02d %02d:%02d:%02d.%04d' % (
+                                                    tmp_gmtime[0], tmp_gmtime[1], tmp_gmtime[2],
+                                                    tmp_gmtime[3], tmp_gmtime[4], tmp_gmtime[5], tmp_gmtime[6])
     def now(self):
         self.clock_now()
         tmp_gmtime = self.gmtime(self.ntp_epoch)
